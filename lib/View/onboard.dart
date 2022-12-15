@@ -1,4 +1,5 @@
 import 'package:ffood/Constant/route_constraint.dart';
+import 'package:ffood/Model/DAO/AccountDAO.dart';
 import 'package:ffood/ViewModel/root_viewModel.dart';
 import 'package:ffood/theme/color.dart';
 import 'package:ffood/utils/shared_pref.dart';
@@ -34,7 +35,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
       PageViewModel(
         title: "Ăn đúng bữa",
         body:
-            "Đặt hàng theo khung giờ và Bean sẽ nhắc bạn ăn cơm đúng bữa để tránh chiếc bụng đói.",
+            "Đặt hàng theo khung giờ và FFood sẽ nhắc bạn ăn cơm đúng bữa để tránh chiếc bụng đói.",
         image: _buildImage('onboard_2.png'),
         decoration: pageDecoration,
       ),
@@ -83,8 +84,8 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
 
   void _onIntroEnd() async {
     // set pref that first onboard is false
-    // AccountDAO _accountDAO = AccountDAO();
-    // var hasLoggedInUser = await _accountDAO.isUserLoggedIn();
+    AccountDAO _accountDAO = AccountDAO();
+    var hasLoggedInUser = await _accountDAO.isUserLoggedIn();
     await setIsFirstOnboard(false);
     if (hasLoggedInUser) {
       await Get.find<RootViewModel>().startUp();
