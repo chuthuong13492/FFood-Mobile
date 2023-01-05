@@ -35,6 +35,12 @@ class MyApp extends StatelessWidget {
             return ScaleRoute(page: SignIn());
           case RoutHandler.ONBOARD:
             return ScaleRoute(page: OnBoardScreen());
+          // case RoutHandler.LOADING:
+          //    return CupertinoPageRoute<bool>(
+          //       builder: (context) => LoadingScreen(
+          //             title: settings.arguments ?? "Đang xử lý...",
+          //           ),
+          //       settings: settings);
           case RoutHandler.HOME:
             return CupertinoPageRoute(
                 builder: (context) => HomePage(), settings: settings);
